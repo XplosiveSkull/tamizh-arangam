@@ -112,10 +112,21 @@ function Scene({ artifactId }: { artifactId: string }) {
   )
 }
 
+const getArtifactById = (id: string | null) => {
+  if (!id) return artifacts[0]
+  return artifacts.find(a => a.id === id) || artifacts[0]
+}
+
 export default function ArtifactSection() {
-  const { setSection } = useAppStore()
+  const { setSection, selectedArtifact: storeArtifact, setSelectedArtifact: storeSetArtifact } = useAppStore()
   const [activeTab, setActiveTab] = useState<'origin' | 'material' | 'significance' | 'story'>('origin')
-  const [selectedArtifact, setSelectedArtifact] = useState(artifacts[0])
+  const [localArtifact, setLocalArtifact] = useState(artifacts[0])
+  const selectedArtifact = storeArtifact ? getArtifactById(storeArtifact) : localArtifact
+  
+  const handleArtifactSelect = (artifact: typeof artifacts[0]) => {
+    setLocalArtifact(artifact)
+    storeSetArtifact(artifact.id)
+  }
 
   return (
     <section className={styles.artifact}>
@@ -196,7 +207,7 @@ export default function ArtifactSection() {
             <button
               key={artifact.id}
               className={`${styles.thumbnail} ${selectedArtifact.id === artifact.id ? styles.activeThumb : ''}`}
-              onClick={() => setSelectedArtifact(artifact)}
+              onClick={() => handleArtifactSelect(artifact)}
             >
               {artifact.name}
             </button>

@@ -85,7 +85,8 @@ export default function TourSection() {
   const [activeTour, setActiveTour] = useState('chola')
   const [isPlaying, setIsPlaying] = useState(false)
   
-  const currentStop = tourStops[Math.floor(tourProgress * (tourStops.length - 1))]
+  const currentStopIndex = Math.min(Math.floor(tourProgress * tourStops.length), tourStops.length - 1)
+  const currentStop = tourStops[currentStopIndex]
 
   return (
     <section className={styles.tour}>

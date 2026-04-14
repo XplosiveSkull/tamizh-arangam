@@ -1,11 +1,13 @@
+import { lazy, Suspense } from 'react'
 import { useAppStore } from './stores/appStore'
-import HeroSection from './components/layout/HeroSection'
-import GallerySection from './components/layout/GallerySection'
-import ArtifactSection from './components/layout/ArtifactSection'
-import TourSection from './components/layout/TourSection'
-import KnowledgeSection from './components/layout/KnowledgeSection'
 import Navigation from './components/ui/Navigation'
 import LoadingScreen from './components/ui/LoadingScreen'
+
+const HeroSection = lazy(() => import('./components/layout/HeroSection'))
+const GallerySection = lazy(() => import('./components/layout/GallerySection'))
+const ArtifactSection = lazy(() => import('./components/layout/ArtifactSection'))
+const TourSection = lazy(() => import('./components/layout/TourSection'))
+const KnowledgeSection = lazy(() => import('./components/layout/KnowledgeSection'))
 
 function App() {
   const { currentSection, isLoading } = useAppStore()
@@ -16,11 +18,13 @@ function App() {
       <Navigation />
       
       <main>
-        {currentSection === 'hero' && <HeroSection />}
-        {currentSection === 'gallery' && <GallerySection />}
-        {currentSection === 'artifact' && <ArtifactSection />}
-        {currentSection === 'tour' && <TourSection />}
-        {currentSection === 'knowledge' && <KnowledgeSection />}
+        <Suspense fallback={<LoadingScreen visible={true} />}>
+          {currentSection === 'hero' && <HeroSection />}
+          {currentSection === 'gallery' && <GallerySection />}
+          {currentSection === 'artifact' && <ArtifactSection />}
+          {currentSection === 'tour' && <TourSection />}
+          {currentSection === 'knowledge' && <KnowledgeSection />}
+        </Suspense>
       </main>
     </>
   )

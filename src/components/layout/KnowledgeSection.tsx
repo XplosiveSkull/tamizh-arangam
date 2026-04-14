@@ -67,7 +67,8 @@ export default function KnowledgeSection() {
     }
   }
 
-  const timelineEvent = timelineEvents[Math.floor(timelinePos * (timelineEvents.length - 1))]
+  const timelineIndex = Math.min(Math.floor(timelinePos * timelineEvents.length), timelineEvents.length - 1)
+  const timelineEvent = timelineEvents[timelineIndex]
 
   return (
     <section className={styles.knowledge}>
