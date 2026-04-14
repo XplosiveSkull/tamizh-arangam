@@ -1,0 +1,130 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-2xl);
+  background: linear-gradient(180deg, rgba(11, 11, 11, 0.95) 0%, rgba(11, 11, 11, 0.7) 100%);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(201, 164, 76, 0.2);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoTamil {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary-accent);
+  letter-spacing: 0.1em;
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: rgba(232, 232, 232, 0.6);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.menu {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: transparent;
+  color: rgba(232, 232, 232, 0.7);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.menuItem::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary-accent);
+  transform: translateX(-50%);
+  transition: width var(--transition-normal);
+}
+
+.menuItem:hover {
+  color: var(--color-primary-accent);
+}
+
+.menuItem:hover::after {
+  width: 80%;
+}
+
+.menuItem.active {
+  color: var(--color-primary-accent);
+}
+
+.menuItem.active::after {
+  width: 100%;
+}
+
+.menuLabel {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+.menuTamil {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 0.7rem;
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.soundToggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(43, 43, 43, 0.8);
+  border: 1px solid rgba(201, 164, 76, 0.3);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+}
+
+.soundToggle:hover {
+  background: rgba(212, 160, 23, 0.2);
+  border-color: var(--color-primary-accent);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .menu {
+    display: none;
+  }
+  
+  .logoText {
+    display: none;
+  }
+}

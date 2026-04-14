@@ -1,0 +1,166 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.canvasContainer {
+  position: absolute;
+  inset: 0;
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  padding: var(--spacing-xl);
+}
+
+.content > * {
+  pointer-events: auto;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.tamilTitle {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #D4A017 0%, #C9A44C 50%, #D4A017 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(212, 160, 23, 0.3);
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+}
+
+.englishTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(232, 232, 232, 0.8);
+  letter-spacing: 0.5em;
+  margin-top: var(--spacing-sm);
+}
+
+.tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  color: rgba(232, 232, 232, 0.6);
+  letter-spacing: 0.15em;
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+
+.enterButton {
+  margin-top: var(--spacing-2xl);
+  padding: var(--spacing-lg) var(--spacing-3xl);
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.15) 0%, rgba(201, 164, 76, 0.1) 100%);
+  border: 2px solid var(--color-primary-accent);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  position: relative;
+  overflow: hidden;
+}
+
+.enterButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-primary-accent), var(--color-accent-gold));
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.enterButton:hover::before {
+  opacity: 0.2;
+}
+
+.enterButton span:first-child {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-primary-accent);
+  letter-spacing: 0.15em;
+  position: relative;
+  z-index: 1;
+}
+
+.enterButton .tamilBtn {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(212, 160, 23, 0.8);
+  position: relative;
+  z-index: 1;
+}
+
+.scrollHint {
+  position: absolute;
+  bottom: var(--spacing-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.scrollHint span {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: rgba(232, 232, 232, 0.4);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.scrollIcon {
+  width: 24px;
+  height: 40px;
+  border: 2px solid rgba(212, 160, 23, 0.3);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.scrollWheel {
+  width: 4px;
+  height: 8px;
+  background: var(--color-primary-accent);
+  border-radius: 2px;
+  animation: scroll-bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 768px) {
+  .tagline {
+    font-size: 0.85rem;
+  }
+  
+  .enterButton {
+    padding: var(--spacing-md) var(--spacing-xl);
+  }
+}

@@ -1,0 +1,158 @@
+.gallery {
+  min-height: 100vh;
+  padding: calc(var(--spacing-3xl) + 60px) var(--spacing-2xl) var(--spacing-2xl);
+  background: linear-gradient(180deg, var(--color-primary-dark) 0%, #0f0f12 100%);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--color-primary-accent);
+  letter-spacing: 0.1em;
+}
+
+.subtitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: rgba(232, 232, 232, 0.5);
+  margin-top: var(--spacing-sm);
+  letter-spacing: 0.15em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.cardInner {
+  position: relative;
+  background: linear-gradient(145deg, rgba(43, 43, 43, 0.6) 0%, rgba(11, 11, 11, 0.8) 100%);
+  border: 1px solid rgba(201, 164, 76, 0.15);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.cardInner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.card:hover .cardInner::before {
+  opacity: 1;
+}
+
+.card:hover .cardInner {
+  border-color: var(--color-primary-accent);
+  box-shadow: 0 10px 40px rgba(212, 160, 23, 0.15);
+}
+
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.2) 0%, rgba(201, 164, 76, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.icon {
+  font-size: 1.8rem;
+}
+
+.cardContent {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: #e8e8e8;
+  letter-spacing: 0.05em;
+}
+
+.cardTamil {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 0.9rem;
+  color: var(--color-primary-accent);
+  margin-top: var(--spacing-xs);
+}
+
+.cardSubtitle {
+  font-size: 0.8rem;
+  color: rgba(232, 232, 232, 0.4);
+  margin-top: var(--spacing-sm);
+}
+
+.cardBorder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-primary-accent) 50%, transparent 100%);
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+}
+
+.card:hover .cardBorder {
+  transform: scaleX(1);
+}
+
+.backButton {
+  display: block;
+  margin: var(--spacing-3xl) auto 0;
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: transparent;
+  border: 1px solid rgba(201, 164, 76, 0.3);
+  border-radius: var(--radius-md);
+  color: rgba(232, 232, 232, 0.7);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  transition: all var(--transition-normal);
+}
+
+.backButton:hover {
+  color: var(--color-primary-accent);
+  border-color: var(--color-primary-accent);
+}
